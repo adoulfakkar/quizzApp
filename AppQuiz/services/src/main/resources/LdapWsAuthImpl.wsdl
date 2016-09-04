@@ -1,0 +1,747 @@
+<definitions name='LdapWsAuth' targetNamespace='http://ws.ldap.quizzApp.com/' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://ws.ldap.quizzApp.com/' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xs:schema targetNamespace='http://ws.ldap.quizzApp.com/' version='1.0' xmlns:tns='http://ws.ldap.quizzApp.com/' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:element name='LdapWsException' type='tns:LdapWsException'/>
+   <xs:element name='getAttribut' type='tns:getAttribut'/>
+   <xs:element name='getAttributResponse' type='tns:getAttributResponse'/>
+   <xs:element name='getCaptcha' type='tns:getCaptcha'/>
+   <xs:element name='getCaptchaResponse' type='tns:getCaptchaResponse'/>
+   <xs:element name='getCert' type='tns:getCert'/>
+   <xs:element name='getCertByteAttribut' type='tns:getCertByteAttribut'/>
+   <xs:element name='getCertByteAttributResponse' type='tns:getCertByteAttributResponse'/>
+   <xs:element name='getCertResponse' type='tns:getCertResponse'/>
+   <xs:element name='getCertStringAttribut' type='tns:getCertStringAttribut'/>
+   <xs:element name='getCertStringAttributResponse' type='tns:getCertStringAttributResponse'/>
+   <xs:element name='getDynamics' type='tns:getDynamics'/>
+   <xs:element name='getDynamicsResponse' type='tns:getDynamicsResponse'/>
+   <xs:element name='getNewPassword' type='tns:getNewPassword'/>
+   <xs:element name='getNewPasswordResponse' type='tns:getNewPasswordResponse'/>
+   <xs:element name='getPrivileges' type='tns:getPrivileges'/>
+   <xs:element name='getPrivilegesResponse' type='tns:getPrivilegesResponse'/>
+   <xs:element name='getProfil' type='tns:getProfil'/>
+   <xs:element name='getProfilResponse' type='tns:getProfilResponse'/>
+   <xs:element name='getRoles' type='tns:getRoles'/>
+   <xs:element name='getRolesResponse' type='tns:getRolesResponse'/>
+   <xs:element name='getSites' type='tns:getSites'/>
+   <xs:element name='getSitesResponse' type='tns:getSitesResponse'/>
+   <xs:element name='isAlive' type='tns:isAlive'/>
+   <xs:element name='isAliveResponse' type='tns:isAliveResponse'/>
+   <xs:element name='isNotRevokedCert' type='tns:isNotRevokedCert'/>
+   <xs:element name='isNotRevokedCertResponse' type='tns:isNotRevokedCertResponse'/>
+   <xs:element name='isValidCert' type='tns:isValidCert'/>
+   <xs:element name='isValidCertResponse' type='tns:isValidCertResponse'/>
+   <xs:element name='login' type='tns:login'/>
+   <xs:element name='loginCert' type='tns:loginCert'/>
+   <xs:element name='loginCertResponse' type='tns:loginCertResponse'/>
+   <xs:element name='loginCrypt' type='tns:loginCrypt'/>
+   <xs:element name='loginCryptResponse' type='tns:loginCryptResponse'/>
+   <xs:element name='loginResponse' type='tns:loginResponse'/>
+   <xs:element name='setCaptchaAsPassword' type='tns:setCaptchaAsPassword'/>
+   <xs:element name='setCaptchaAsPasswordResponse' type='tns:setCaptchaAsPasswordResponse'/>
+   <xs:element name='setPassword' type='tns:setPassword'/>
+   <xs:element name='setPasswordCert' type='tns:setPasswordCert'/>
+   <xs:element name='setPasswordCertResponse' type='tns:setPasswordCertResponse'/>
+   <xs:element name='setPasswordResponse' type='tns:setPasswordResponse'/>
+   <xs:complexType name='isAlive'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='isAliveResponse'>
+    <xs:sequence>
+     <xs:element name='return' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='LdapWsException'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='function' type='xs:string'/>
+     <xs:element minOccurs='0' name='message' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setPassword'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='user' type='xs:string'/>
+     <xs:element minOccurs='0' name='OldPassword' type='xs:string'/>
+     <xs:element minOccurs='0' name='NewPassword' type='xs:string'/>
+     <xs:element minOccurs='0' name='NewPassword2' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setPasswordResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getRoles'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='applicationName' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getRolesResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='login'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='user' type='xs:string'/>
+     <xs:element minOccurs='0' name='password' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='loginResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='loginCrypt'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='user' type='xs:string'/>
+     <xs:element minOccurs='0' name='password' type='xs:base64Binary'/>
+     <xs:element minOccurs='0' name='codage' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='loginCryptResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPrivileges'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='applicationName' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPrivilegesResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getDynamics'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='applicationName' type='xs:string'/>
+     <xs:element minOccurs='0' name='request' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='params' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getDynamicsResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getSites'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='applicationName' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getSitesResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getAttribut'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='attributName' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getAttributResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='isValidCert'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='cert' type='xs:base64Binary'/>
+     <xs:element name='testDate' type='xs:boolean'/>
+     <xs:element name='testRevoked' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='isValidCertResponse'>
+    <xs:sequence>
+     <xs:element name='return' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='isNotRevokedCert'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='isNotRevokedCertResponse'>
+    <xs:sequence>
+     <xs:element name='return' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getCertStringAttribut'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='attribut' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getCertStringAttributResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getCertByteAttribut'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='attribut' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getCertByteAttributResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:base64Binary'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getCert'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getCertResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:base64Binary'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getNewPassword'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+     <xs:element minOccurs='0' name='email' type='xs:string'/>
+     <xs:element minOccurs='0' name='url' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getNewPasswordResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getCaptcha'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='chgpwdId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getCaptchaResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:base64Binary'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setCaptchaAsPassword'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='chgpwdId' type='xs:string'/>
+     <xs:element minOccurs='0' name='texte' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setCaptchaAsPasswordResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getProfil'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getProfilResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='loginCert'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='cert' type='xs:base64Binary'/>
+     <xs:element minOccurs='0' name='password' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='loginCertResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setPasswordCert'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='cert' type='xs:base64Binary'/>
+     <xs:element minOccurs='0' name='oldPassword' type='xs:string'/>
+     <xs:element minOccurs='0' name='newPassword' type='xs:string'/>
+     <xs:element minOccurs='0' name='newPassword2' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setPasswordCertResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+ </types>
+ <message name='LdapWsAuth_isNotRevokedCertResponse'>
+  <part element='tns:isNotRevokedCertResponse' name='isNotRevokedCertResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getCertStringAttributResponse'>
+  <part element='tns:getCertStringAttributResponse' name='getCertStringAttributResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getRoles'>
+  <part element='tns:getRoles' name='getRoles'></part>
+ </message>
+ <message name='LdapWsAuth_getProfil'>
+  <part element='tns:getProfil' name='getProfil'></part>
+ </message>
+ <message name='LdapWsException'>
+  <part element='tns:LdapWsException' name='LdapWsException'></part>
+ </message>
+ <message name='LdapWsAuth_getProfilResponse'>
+  <part element='tns:getProfilResponse' name='getProfilResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getRolesResponse'>
+  <part element='tns:getRolesResponse' name='getRolesResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getDynamicsResponse'>
+  <part element='tns:getDynamicsResponse' name='getDynamicsResponse'></part>
+ </message>
+ <message name='LdapWsAuth_setPasswordCertResponse'>
+  <part element='tns:setPasswordCertResponse' name='setPasswordCertResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getAttribut'>
+  <part element='tns:getAttribut' name='getAttribut'></part>
+ </message>
+ <message name='LdapWsAuth_getSites'>
+  <part element='tns:getSites' name='getSites'></part>
+ </message>
+ <message name='LdapWsAuth_loginCrypt'>
+  <part element='tns:loginCrypt' name='loginCrypt'></part>
+ </message>
+ <message name='LdapWsAuth_loginCertResponse'>
+  <part element='tns:loginCertResponse' name='loginCertResponse'></part>
+ </message>
+ <message name='LdapWsAuth_loginCert'>
+  <part element='tns:loginCert' name='loginCert'></part>
+ </message>
+ <message name='LdapWsAuth_setPasswordCert'>
+  <part element='tns:setPasswordCert' name='setPasswordCert'></part>
+ </message>
+ <message name='LdapWsAuth_getCert'>
+  <part element='tns:getCert' name='getCert'></part>
+ </message>
+ <message name='LdapWsAuth_getNewPassword'>
+  <part element='tns:getNewPassword' name='getNewPassword'></part>
+ </message>
+ <message name='LdapWsAuth_isNotRevokedCert'>
+  <part element='tns:isNotRevokedCert' name='isNotRevokedCert'></part>
+ </message>
+ <message name='LdapWsAuth_getSitesResponse'>
+  <part element='tns:getSitesResponse' name='getSitesResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getCertByteAttribut'>
+  <part element='tns:getCertByteAttribut' name='getCertByteAttribut'></part>
+ </message>
+ <message name='LdapWsAuth_getCaptcha'>
+  <part element='tns:getCaptcha' name='getCaptcha'></part>
+ </message>
+ <message name='LdapWsAuth_getCertByteAttributResponse'>
+  <part element='tns:getCertByteAttributResponse' name='getCertByteAttributResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getCaptchaResponse'>
+  <part element='tns:getCaptchaResponse' name='getCaptchaResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getPrivileges'>
+  <part element='tns:getPrivileges' name='getPrivileges'></part>
+ </message>
+ <message name='LdapWsAuth_getAttributResponse'>
+  <part element='tns:getAttributResponse' name='getAttributResponse'></part>
+ </message>
+ <message name='LdapWsAuth_loginResponse'>
+  <part element='tns:loginResponse' name='loginResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getCertStringAttribut'>
+  <part element='tns:getCertStringAttribut' name='getCertStringAttribut'></part>
+ </message>
+ <message name='LdapWsAuth_isAliveResponse'>
+  <part element='tns:isAliveResponse' name='isAliveResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getDynamics'>
+  <part element='tns:getDynamics' name='getDynamics'></part>
+ </message>
+ <message name='LdapWsAuth_loginCryptResponse'>
+  <part element='tns:loginCryptResponse' name='loginCryptResponse'></part>
+ </message>
+ <message name='LdapWsAuth_login'>
+  <part element='tns:login' name='login'></part>
+ </message>
+ <message name='LdapWsAuth_isValidCert'>
+  <part element='tns:isValidCert' name='isValidCert'></part>
+ </message>
+ <message name='LdapWsAuth_isAlive'>
+  <part element='tns:isAlive' name='isAlive'></part>
+ </message>
+ <message name='LdapWsAuth_setPasswordResponse'>
+  <part element='tns:setPasswordResponse' name='setPasswordResponse'></part>
+ </message>
+ <message name='LdapWsAuth_isValidCertResponse'>
+  <part element='tns:isValidCertResponse' name='isValidCertResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getPrivilegesResponse'>
+  <part element='tns:getPrivilegesResponse' name='getPrivilegesResponse'></part>
+ </message>
+ <message name='LdapWsAuth_setPassword'>
+  <part element='tns:setPassword' name='setPassword'></part>
+ </message>
+ <message name='LdapWsAuth_getCertResponse'>
+  <part element='tns:getCertResponse' name='getCertResponse'></part>
+ </message>
+ <message name='LdapWsAuth_setCaptchaAsPasswordResponse'>
+  <part element='tns:setCaptchaAsPasswordResponse' name='setCaptchaAsPasswordResponse'></part>
+ </message>
+ <message name='LdapWsAuth_getNewPasswordResponse'>
+  <part element='tns:getNewPasswordResponse' name='getNewPasswordResponse'></part>
+ </message>
+ <message name='LdapWsAuth_setCaptchaAsPassword'>
+  <part element='tns:setCaptchaAsPassword' name='setCaptchaAsPassword'></part>
+ </message>
+ <portType name='LdapWsAuth'>
+  <operation name='getAttribut' parameterOrder='getAttribut'>
+   <input message='tns:LdapWsAuth_getAttribut'></input>
+   <output message='tns:LdapWsAuth_getAttributResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getCaptcha' parameterOrder='getCaptcha'>
+   <input message='tns:LdapWsAuth_getCaptcha'></input>
+   <output message='tns:LdapWsAuth_getCaptchaResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getCert' parameterOrder='getCert'>
+   <input message='tns:LdapWsAuth_getCert'></input>
+   <output message='tns:LdapWsAuth_getCertResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getCertByteAttribut' parameterOrder='getCertByteAttribut'>
+   <input message='tns:LdapWsAuth_getCertByteAttribut'></input>
+   <output message='tns:LdapWsAuth_getCertByteAttributResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getCertStringAttribut' parameterOrder='getCertStringAttribut'>
+   <input message='tns:LdapWsAuth_getCertStringAttribut'></input>
+   <output message='tns:LdapWsAuth_getCertStringAttributResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getDynamics' parameterOrder='getDynamics'>
+   <input message='tns:LdapWsAuth_getDynamics'></input>
+   <output message='tns:LdapWsAuth_getDynamicsResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getNewPassword' parameterOrder='getNewPassword'>
+   <input message='tns:LdapWsAuth_getNewPassword'></input>
+   <output message='tns:LdapWsAuth_getNewPasswordResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getPrivileges' parameterOrder='getPrivileges'>
+   <input message='tns:LdapWsAuth_getPrivileges'></input>
+   <output message='tns:LdapWsAuth_getPrivilegesResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getProfil' parameterOrder='getProfil'>
+   <input message='tns:LdapWsAuth_getProfil'></input>
+   <output message='tns:LdapWsAuth_getProfilResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getRoles' parameterOrder='getRoles'>
+   <input message='tns:LdapWsAuth_getRoles'></input>
+   <output message='tns:LdapWsAuth_getRolesResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getSites' parameterOrder='getSites'>
+   <input message='tns:LdapWsAuth_getSites'></input>
+   <output message='tns:LdapWsAuth_getSitesResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='isAlive' parameterOrder='isAlive'>
+   <input message='tns:LdapWsAuth_isAlive'></input>
+   <output message='tns:LdapWsAuth_isAliveResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='isNotRevokedCert' parameterOrder='isNotRevokedCert'>
+   <input message='tns:LdapWsAuth_isNotRevokedCert'></input>
+   <output message='tns:LdapWsAuth_isNotRevokedCertResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='isValidCert' parameterOrder='isValidCert'>
+   <input message='tns:LdapWsAuth_isValidCert'></input>
+   <output message='tns:LdapWsAuth_isValidCertResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='login' parameterOrder='login'>
+   <input message='tns:LdapWsAuth_login'></input>
+   <output message='tns:LdapWsAuth_loginResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='loginCert' parameterOrder='loginCert'>
+   <input message='tns:LdapWsAuth_loginCert'></input>
+   <output message='tns:LdapWsAuth_loginCertResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='loginCrypt' parameterOrder='loginCrypt'>
+   <input message='tns:LdapWsAuth_loginCrypt'></input>
+   <output message='tns:LdapWsAuth_loginCryptResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='setCaptchaAsPassword' parameterOrder='setCaptchaAsPassword'>
+   <input message='tns:LdapWsAuth_setCaptchaAsPassword'></input>
+   <output message='tns:LdapWsAuth_setCaptchaAsPasswordResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='setPassword' parameterOrder='setPassword'>
+   <input message='tns:LdapWsAuth_setPassword'></input>
+   <output message='tns:LdapWsAuth_setPasswordResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='setPasswordCert' parameterOrder='setPasswordCert'>
+   <input message='tns:LdapWsAuth_setPasswordCert'></input>
+   <output message='tns:LdapWsAuth_setPasswordCertResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+ </portType>
+ <binding name='LdapWsAuthBinding' type='tns:LdapWsAuth'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='getAttribut'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getCaptcha'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getCert'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getCertByteAttribut'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getCertStringAttribut'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getDynamics'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getNewPassword'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getPrivileges'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getProfil'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getRoles'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getSites'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='isAlive'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='isNotRevokedCert'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='isValidCert'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='login'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='loginCert'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='loginCrypt'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='setCaptchaAsPassword'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='setPassword'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='setPasswordCert'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+ </binding>
+ <service name='LdapWsAuth'>
+  <port binding='tns:LdapWsAuthBinding' name='LdapWsAuthImplPort'>
+   <soap:address location='http://annuuddi.fr.quizzApp.com/LdapWs/LdapWsAuthImpl'/>
+  </port>
+ </service>
+</definitions>

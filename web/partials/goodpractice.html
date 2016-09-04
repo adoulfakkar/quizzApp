@@ -1,0 +1,70 @@
+<div>
+	<h2>Bonne pratique :</h2>
+	<div class="table">
+		<div class="row head">
+			<div class="col col25">Titre</div>
+			<div class="col col25">Type</div>
+			<div class="col col25">Fichier</div>
+			<div class="col col25">Actions</div>
+		</div>
+		<form name="gpForm" ng-repeat="goodPractice in model.goodPractices">
+			<div class="row">
+				<div class="col col25">
+					<textarea type="text" ng-model="goodPractice.title" ng-required="true"></textarea>
+				</div>
+				<div class="col col25">
+					<select ng-model="goodPractice.type" ng-required="true">
+						<option value="1">image</option>
+						<option value="2">pdf</option>
+						<option value="3">Radio Diffusion</option>
+					</select>
+				</div>
+				<div class="col col25">
+					<div ng-if="goodPractice.type == 1" class="uploadContainer" upload-preview-file ng-model="goodPractice.imageUpload" img-src="goodPractice.fileUrl">
+					</div>
+					<input ng-if="goodPractice.type != 1" upload-file type="file" ng-model="goodPractice.fileUpload" />
+					<a ng-if="goodPractice.type != 1" href="{{goodPractice.fileUrl}}">Voir le fichier</a>
+				</div>
+				<div class="col col25">
+					<button ng-click="updateGoodPractice (goodPractice)" ng-disabled="gpForm.$invalid">Modifier</button>
+					<button ng-click="deleteGoodPractice (goodPractice)">Supprimer</button>
+				</div>
+			</div>
+		</form>
+		<form name="newGpForm">
+			<div class="row" ng-if="model.newGoodPractice">
+				<div class="col col25">
+					<textarea ng-model="model.newGoodPractice.title" ng-required="true"></textarea>
+				</div>
+				<div class="col col25">
+					<select ng-model="model.newGoodPractice.type" ng-required="true">
+						<option value="1">image</option>
+						<option value="2">pdf</option>
+						<option value="3">Radio Diffusion</option>
+					</select>
+				</div>
+				<div class="col col25">
+					<div ng-if="model.newGoodPractice.type == 1" class="uploadContainer" upload-preview-file ng-model="model.newGoodPractice.imageUpload" img-src="model.newGoodPractice.fileUrl"
+						  ng-required="true">
+					</div>
+					<input type="file" upload-file ng-model="model.newGoodPractice.fileUpload" ng-if="model.newGoodPractice.type != 1" ng-required="true"/>
+				</div>
+				<div class="col col25">
+					<button ng-click="commitNewGoodPractice()" ng-disabled="newGpForm.$invalid">A</button>
+					<button ng-click="deleteNewGoodPractice()">X</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col6 smallHeight" colspan="6">
+					<button type="button" ng-click="addGoodPractice()">Ajouter une Bonne pratique</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="paginationContainer">
+		<pagination total-items="model.count" ng-model="model.currentPage" max-size="10" class="pagination-sm" boundary-links="divue" ng-change="loadPage (model.currentPage - 1)"></pagination>
+	</div>
+</div>
+<div class="popin" ng-show="model.loading">
+	<div class="loader"></div>
+</div>

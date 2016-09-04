@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.adoulfakkar.quizzApp</groupId>
+		<artifactId>quizzAppQuiz</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>services</artifactId>
+	<name>adoulfakkar quizzAppQuiz Services</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.adoulfakkar.quizzApp</groupId>
+			<artifactId>dao</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jivesoftware</groupId>
+			<artifactId>smack</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.notnoop.apns</groupId>
+			<artifactId>apns</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+        </dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>xsd</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<configuration>
+							<!-- Package to store the generated file -->
+							<packageName>com.adoulfakkar.quizzApp.service.wsdl.user</packageName>
+							<!-- Input is not XML schema -->
+							<xmlschema>true</xmlschema>
+							<!-- The WSDL file that you saved earlier -->
+							<schemaFiles>getProfil.xsd</schemaFiles>
+							<!-- The location of the WSDL file -->
+							<schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
+							<!-- The output directory to store the generated Java files -->
+							<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+							<!-- Don't clear output directory on each run -->
+							<clearOutputDir>false</clearOutputDir>
+						</configuration>
+					</execution>
+					<execution>
+						<id>wsdl</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<configuration>
+							<!-- Package to store the generated file -->
+							<packageName>com.adoulfakkar.quizzApp.service.wsdl.auth</packageName>
+							<!-- Treat the input as WSDL -->
+							<wsdl>true</wsdl>
+							<!-- Input is not XML schema -->
+							<xmlschema>false</xmlschema>
+							<!-- The WSDL file that you saved earlier -->
+							<schemaFiles>LdapWsAuthImpl.wsdl</schemaFiles>
+							<!-- The location of the WSDL file -->
+							<schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
+							<!-- The output directory to store the generated Java files -->
+							<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+							<!-- Don't clear output directory on each run -->
+							<clearOutputDir>false</clearOutputDir>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,869 @@
+<definitions name='LdapWsUser' targetNamespace='http://ws.ldap.quizzApp.com/' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://ws.ldap.quizzApp.com/' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xs:schema targetNamespace='http://ws.ldap.quizzApp.com/' version='1.0' xmlns:tns='http://ws.ldap.quizzApp.com/' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:element name='LdapWsException' type='tns:LdapWsException'/>
+   <xs:element name='addService' type='tns:addService'/>
+   <xs:element name='addServiceResponse' type='tns:addServiceResponse'/>
+   <xs:element name='addUser' type='tns:addUser'/>
+   <xs:element name='addUserResponse' type='tns:addUserResponse'/>
+   <xs:element name='deleteService' type='tns:deleteService'/>
+   <xs:element name='deleteServiceResponse' type='tns:deleteServiceResponse'/>
+   <xs:element name='deleteUser' type='tns:deleteUser'/>
+   <xs:element name='deleteUserResponse' type='tns:deleteUserResponse'/>
+   <xs:element name='getBussiness' type='tns:getBussiness'/>
+   <xs:element name='getBussinessResponse' type='tns:getBussinessResponse'/>
+   <xs:element name='getChildServices' type='tns:getChildServices'/>
+   <xs:element name='getChildServicesResponse' type='tns:getChildServicesResponse'/>
+   <xs:element name='getFunctions' type='tns:getFunctions'/>
+   <xs:element name='getFunctionsResponse' type='tns:getFunctionsResponse'/>
+   <xs:element name='getManagerService' type='tns:getManagerService'/>
+   <xs:element name='getManagerServiceResponse' type='tns:getManagerServiceResponse'/>
+   <xs:element name='getParentService' type='tns:getParentService'/>
+   <xs:element name='getParentServiceResponse' type='tns:getParentServiceResponse'/>
+   <xs:element name='getSecretariesService' type='tns:getSecretariesService'/>
+   <xs:element name='getSecretariesServiceResponse' type='tns:getSecretariesServiceResponse'/>
+   <xs:element name='getServiceAttributs' type='tns:getServiceAttributs'/>
+   <xs:element name='getServiceAttributsResponse' type='tns:getServiceAttributsResponse'/>
+   <xs:element name='getServices' type='tns:getServices'/>
+   <xs:element name='getServicesResponse' type='tns:getServicesResponse'/>
+   <xs:element name='getUserAttributs' type='tns:getUserAttributs'/>
+   <xs:element name='getUserAttributsResponse' type='tns:getUserAttributsResponse'/>
+   <xs:element name='getUserCert' type='tns:getUserCert'/>
+   <xs:element name='getUserCertByteAttribut' type='tns:getUserCertByteAttribut'/>
+   <xs:element name='getUserCertByteAttributResponse' type='tns:getUserCertByteAttributResponse'/>
+   <xs:element name='getUserCertResponse' type='tns:getUserCertResponse'/>
+   <xs:element name='getUserCertStringAttribut' type='tns:getUserCertStringAttribut'/>
+   <xs:element name='getUserCertStringAttributResponse' type='tns:getUserCertStringAttributResponse'/>
+   <xs:element name='getUsersAttribut' type='tns:getUsersAttribut'/>
+   <xs:element name='getUsersAttributResponse' type='tns:getUsersAttributResponse'/>
+   <xs:element name='isNotRevokedUserCert' type='tns:isNotRevokedUserCert'/>
+   <xs:element name='isNotRevokedUserCertResponse' type='tns:isNotRevokedUserCertResponse'/>
+   <xs:element name='isValidUserCert' type='tns:isValidUserCert'/>
+   <xs:element name='isValidUserCertResponse' type='tns:isValidUserCertResponse'/>
+   <xs:element name='searchUsers' type='tns:searchUsers'/>
+   <xs:element name='searchUsersResponse' type='tns:searchUsersResponse'/>
+   <xs:element name='setServiceAttributs' type='tns:setServiceAttributs'/>
+   <xs:element name='setServiceAttributsResponse' type='tns:setServiceAttributsResponse'/>
+   <xs:element name='setUserAttributs' type='tns:setUserAttributs'/>
+   <xs:element name='setUserAttributsResponse' type='tns:setUserAttributsResponse'/>
+   <xs:element name='setUserPassword' type='tns:setUserPassword'/>
+   <xs:element name='setUserPasswordResponse' type='tns:setUserPasswordResponse'/>
+   <xs:complexType name='getServices'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getServicesResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='LdapWsException'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='function' type='xs:string'/>
+     <xs:element minOccurs='0' name='message' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getFunctions'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceId' type='xs:string'/>
+     <xs:element minOccurs='0' name='pad' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getFunctionsResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='addService'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='newService' type='xs:string'/>
+     <xs:element minOccurs='0' name='baseServiceId' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsType' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsValue' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='addServiceResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='deleteUser'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='deleteUserResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='addUser'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsType' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsValue' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='addUserResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='setUserAttributs'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsType' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsValue' type='xs:string'/>
+     <xs:element minOccurs='0' name='fAction' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setUserAttributsResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getUserAttributs'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsType' type='xs:string'/>
+     <xs:element minOccurs='0' name='pad' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUserAttributsResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUsersAttribut'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='logins' type='xs:string'/>
+     <xs:element minOccurs='0' name='attributsType' type='xs:string'/>
+     <xs:element minOccurs='0' name='pad' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUsersAttributResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='searchUsers'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='login' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsType' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsValue' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='searchUsersResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setUserPassword'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='adminUser' type='xs:string'/>
+     <xs:element minOccurs='0' name='adminPassword' type='xs:string'/>
+     <xs:element minOccurs='0' name='user' type='xs:string'/>
+     <xs:element minOccurs='0' name='userPassword' type='xs:string'/>
+     <xs:element minOccurs='0' name='userConfirm' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setUserPasswordResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='deleteService'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='deleteServiceResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getServiceAttributs'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceId' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsType' type='xs:string'/>
+     <xs:element minOccurs='0' name='pad' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getServiceAttributsResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setServiceAttributs'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceId' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsType' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='attributsValue' type='xs:string'/>
+     <xs:element minOccurs='0' name='fAction' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='setServiceAttributsResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getSecretariesService'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getSecretariesServiceResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getChildServices'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getChildServicesResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getParentService'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getParentServiceResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getManagerService'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getManagerServiceResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getBussiness'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='serviceId' type='xs:string'/>
+     <xs:element minOccurs='0' name='pad' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getBussinessResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='isValidUserCert'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+     <xs:element name='testDate' type='xs:boolean'/>
+     <xs:element name='testRevoked' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='isValidUserCertResponse'>
+    <xs:sequence>
+     <xs:element name='return' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='isNotRevokedUserCert'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='isNotRevokedUserCertResponse'>
+    <xs:sequence>
+     <xs:element name='return' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUserCertStringAttribut'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+     <xs:element minOccurs='0' name='attribut' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUserCertStringAttributResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUserCertByteAttribut'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+     <xs:element minOccurs='0' name='attribut' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUserCertByteAttributResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:base64Binary'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUserCert'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getUserCertResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:base64Binary'/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+ </types>
+ <message name='LdapWsUser_isValidUserCertResponse'>
+  <part element='tns:isValidUserCertResponse' name='isValidUserCertResponse'></part>
+ </message>
+ <message name='LdapWsUser_getServiceAttributs'>
+  <part element='tns:getServiceAttributs' name='getServiceAttributs'></part>
+ </message>
+ <message name='LdapWsUser_getParentServiceResponse'>
+  <part element='tns:getParentServiceResponse' name='getParentServiceResponse'></part>
+ </message>
+ <message name='LdapWsUser_isNotRevokedUserCertResponse'>
+  <part element='tns:isNotRevokedUserCertResponse' name='isNotRevokedUserCertResponse'></part>
+ </message>
+ <message name='LdapWsUser_addServiceResponse'>
+  <part element='tns:addServiceResponse' name='addServiceResponse'></part>
+ </message>
+ <message name='LdapWsUser_getFunctions'>
+  <part element='tns:getFunctions' name='getFunctions'></part>
+ </message>
+ <message name='LdapWsUser_searchUsersResponse'>
+  <part element='tns:searchUsersResponse' name='searchUsersResponse'></part>
+ </message>
+ <message name='LdapWsException'>
+  <part element='tns:LdapWsException' name='LdapWsException'></part>
+ </message>
+ <message name='LdapWsUser_setServiceAttributs'>
+  <part element='tns:setServiceAttributs' name='setServiceAttributs'></part>
+ </message>
+ <message name='LdapWsUser_getFunctionsResponse'>
+  <part element='tns:getFunctionsResponse' name='getFunctionsResponse'></part>
+ </message>
+ <message name='LdapWsUser_getUserCertByteAttribut'>
+  <part element='tns:getUserCertByteAttribut' name='getUserCertByteAttribut'></part>
+ </message>
+ <message name='LdapWsUser_setUserPassword'>
+  <part element='tns:setUserPassword' name='setUserPassword'></part>
+ </message>
+ <message name='LdapWsUser_setUserAttributs'>
+  <part element='tns:setUserAttributs' name='setUserAttributs'></part>
+ </message>
+ <message name='LdapWsUser_searchUsers'>
+  <part element='tns:searchUsers' name='searchUsers'></part>
+ </message>
+ <message name='LdapWsUser_deleteServiceResponse'>
+  <part element='tns:deleteServiceResponse' name='deleteServiceResponse'></part>
+ </message>
+ <message name='LdapWsUser_getServiceAttributsResponse'>
+  <part element='tns:getServiceAttributsResponse' name='getServiceAttributsResponse'></part>
+ </message>
+ <message name='LdapWsUser_getUserCert'>
+  <part element='tns:getUserCert' name='getUserCert'></part>
+ </message>
+ <message name='LdapWsUser_getManagerService'>
+  <part element='tns:getManagerService' name='getManagerService'></part>
+ </message>
+ <message name='LdapWsUser_getSecretariesService'>
+  <part element='tns:getSecretariesService' name='getSecretariesService'></part>
+ </message>
+ <message name='LdapWsUser_getUserCertStringAttribut'>
+  <part element='tns:getUserCertStringAttribut' name='getUserCertStringAttribut'></part>
+ </message>
+ <message name='LdapWsUser_getManagerServiceResponse'>
+  <part element='tns:getManagerServiceResponse' name='getManagerServiceResponse'></part>
+ </message>
+ <message name='LdapWsUser_isValidUserCert'>
+  <part element='tns:isValidUserCert' name='isValidUserCert'></part>
+ </message>
+ <message name='LdapWsUser_addUserResponse'>
+  <part element='tns:addUserResponse' name='addUserResponse'></part>
+ </message>
+ <message name='LdapWsUser_getBussinessResponse'>
+  <part element='tns:getBussinessResponse' name='getBussinessResponse'></part>
+ </message>
+ <message name='LdapWsUser_getChildServicesResponse'>
+  <part element='tns:getChildServicesResponse' name='getChildServicesResponse'></part>
+ </message>
+ <message name='LdapWsUser_getUsersAttribut'>
+  <part element='tns:getUsersAttribut' name='getUsersAttribut'></part>
+ </message>
+ <message name='LdapWsUser_getUserAttributs'>
+  <part element='tns:getUserAttributs' name='getUserAttributs'></part>
+ </message>
+ <message name='LdapWsUser_getUserCertResponse'>
+  <part element='tns:getUserCertResponse' name='getUserCertResponse'></part>
+ </message>
+ <message name='LdapWsUser_getSecretariesServiceResponse'>
+  <part element='tns:getSecretariesServiceResponse' name='getSecretariesServiceResponse'></part>
+ </message>
+ <message name='LdapWsUser_setUserPasswordResponse'>
+  <part element='tns:setUserPasswordResponse' name='setUserPasswordResponse'></part>
+ </message>
+ <message name='LdapWsUser_setServiceAttributsResponse'>
+  <part element='tns:setServiceAttributsResponse' name='setServiceAttributsResponse'></part>
+ </message>
+ <message name='LdapWsUser_getBussiness'>
+  <part element='tns:getBussiness' name='getBussiness'></part>
+ </message>
+ <message name='LdapWsUser_addUser'>
+  <part element='tns:addUser' name='addUser'></part>
+ </message>
+ <message name='LdapWsUser_getServicesResponse'>
+  <part element='tns:getServicesResponse' name='getServicesResponse'></part>
+ </message>
+ <message name='LdapWsUser_getUserCertStringAttributResponse'>
+  <part element='tns:getUserCertStringAttributResponse' name='getUserCertStringAttributResponse'></part>
+ </message>
+ <message name='LdapWsUser_getServices'>
+  <part element='tns:getServices' name='getServices'></part>
+ </message>
+ <message name='LdapWsUser_deleteUser'>
+  <part element='tns:deleteUser' name='deleteUser'></part>
+ </message>
+ <message name='LdapWsUser_getUsersAttributResponse'>
+  <part element='tns:getUsersAttributResponse' name='getUsersAttributResponse'></part>
+ </message>
+ <message name='LdapWsUser_getChildServices'>
+  <part element='tns:getChildServices' name='getChildServices'></part>
+ </message>
+ <message name='LdapWsUser_addService'>
+  <part element='tns:addService' name='addService'></part>
+ </message>
+ <message name='LdapWsUser_getUserCertByteAttributResponse'>
+  <part element='tns:getUserCertByteAttributResponse' name='getUserCertByteAttributResponse'></part>
+ </message>
+ <message name='LdapWsUser_setUserAttributsResponse'>
+  <part element='tns:setUserAttributsResponse' name='setUserAttributsResponse'></part>
+ </message>
+ <message name='LdapWsUser_getUserAttributsResponse'>
+  <part element='tns:getUserAttributsResponse' name='getUserAttributsResponse'></part>
+ </message>
+ <message name='LdapWsUser_deleteUserResponse'>
+  <part element='tns:deleteUserResponse' name='deleteUserResponse'></part>
+ </message>
+ <message name='LdapWsUser_isNotRevokedUserCert'>
+  <part element='tns:isNotRevokedUserCert' name='isNotRevokedUserCert'></part>
+ </message>
+ <message name='LdapWsUser_deleteService'>
+  <part element='tns:deleteService' name='deleteService'></part>
+ </message>
+ <message name='LdapWsUser_getParentService'>
+  <part element='tns:getParentService' name='getParentService'></part>
+ </message>
+ <portType name='LdapWsUser'>
+  <operation name='addService' parameterOrder='addService'>
+   <input message='tns:LdapWsUser_addService'></input>
+   <output message='tns:LdapWsUser_addServiceResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='addUser' parameterOrder='addUser'>
+   <input message='tns:LdapWsUser_addUser'></input>
+   <output message='tns:LdapWsUser_addUserResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='deleteService' parameterOrder='deleteService'>
+   <input message='tns:LdapWsUser_deleteService'></input>
+   <output message='tns:LdapWsUser_deleteServiceResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='deleteUser' parameterOrder='deleteUser'>
+   <input message='tns:LdapWsUser_deleteUser'></input>
+   <output message='tns:LdapWsUser_deleteUserResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getBussiness' parameterOrder='getBussiness'>
+   <input message='tns:LdapWsUser_getBussiness'></input>
+   <output message='tns:LdapWsUser_getBussinessResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getChildServices' parameterOrder='getChildServices'>
+   <input message='tns:LdapWsUser_getChildServices'></input>
+   <output message='tns:LdapWsUser_getChildServicesResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getFunctions' parameterOrder='getFunctions'>
+   <input message='tns:LdapWsUser_getFunctions'></input>
+   <output message='tns:LdapWsUser_getFunctionsResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getManagerService' parameterOrder='getManagerService'>
+   <input message='tns:LdapWsUser_getManagerService'></input>
+   <output message='tns:LdapWsUser_getManagerServiceResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getParentService' parameterOrder='getParentService'>
+   <input message='tns:LdapWsUser_getParentService'></input>
+   <output message='tns:LdapWsUser_getParentServiceResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getSecretariesService' parameterOrder='getSecretariesService'>
+   <input message='tns:LdapWsUser_getSecretariesService'></input>
+   <output message='tns:LdapWsUser_getSecretariesServiceResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getServiceAttributs' parameterOrder='getServiceAttributs'>
+   <input message='tns:LdapWsUser_getServiceAttributs'></input>
+   <output message='tns:LdapWsUser_getServiceAttributsResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getServices' parameterOrder='getServices'>
+   <input message='tns:LdapWsUser_getServices'></input>
+   <output message='tns:LdapWsUser_getServicesResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getUserAttributs' parameterOrder='getUserAttributs'>
+   <input message='tns:LdapWsUser_getUserAttributs'></input>
+   <output message='tns:LdapWsUser_getUserAttributsResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getUserCert' parameterOrder='getUserCert'>
+   <input message='tns:LdapWsUser_getUserCert'></input>
+   <output message='tns:LdapWsUser_getUserCertResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getUserCertByteAttribut' parameterOrder='getUserCertByteAttribut'>
+   <input message='tns:LdapWsUser_getUserCertByteAttribut'></input>
+   <output message='tns:LdapWsUser_getUserCertByteAttributResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getUserCertStringAttribut' parameterOrder='getUserCertStringAttribut'>
+   <input message='tns:LdapWsUser_getUserCertStringAttribut'></input>
+   <output message='tns:LdapWsUser_getUserCertStringAttributResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='getUsersAttribut' parameterOrder='getUsersAttribut'>
+   <input message='tns:LdapWsUser_getUsersAttribut'></input>
+   <output message='tns:LdapWsUser_getUsersAttributResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='isNotRevokedUserCert' parameterOrder='isNotRevokedUserCert'>
+   <input message='tns:LdapWsUser_isNotRevokedUserCert'></input>
+   <output message='tns:LdapWsUser_isNotRevokedUserCertResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='isValidUserCert' parameterOrder='isValidUserCert'>
+   <input message='tns:LdapWsUser_isValidUserCert'></input>
+   <output message='tns:LdapWsUser_isValidUserCertResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='searchUsers' parameterOrder='searchUsers'>
+   <input message='tns:LdapWsUser_searchUsers'></input>
+   <output message='tns:LdapWsUser_searchUsersResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='setServiceAttributs' parameterOrder='setServiceAttributs'>
+   <input message='tns:LdapWsUser_setServiceAttributs'></input>
+   <output message='tns:LdapWsUser_setServiceAttributsResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='setUserAttributs' parameterOrder='setUserAttributs'>
+   <input message='tns:LdapWsUser_setUserAttributs'></input>
+   <output message='tns:LdapWsUser_setUserAttributsResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+  <operation name='setUserPassword' parameterOrder='setUserPassword'>
+   <input message='tns:LdapWsUser_setUserPassword'></input>
+   <output message='tns:LdapWsUser_setUserPasswordResponse'></output>
+   <fault message='tns:LdapWsException' name='LdapWsException'></fault>
+  </operation>
+ </portType>
+ <binding name='LdapWsUserBinding' type='tns:LdapWsUser'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='addService'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='addUser'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='deleteService'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='deleteUser'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getBussiness'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getChildServices'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getFunctions'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getManagerService'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getParentService'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getSecretariesService'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getServiceAttributs'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getServices'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getUserAttributs'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getUserCert'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getUserCertByteAttribut'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getUserCertStringAttribut'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='getUsersAttribut'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='isNotRevokedUserCert'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='isValidUserCert'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='searchUsers'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='setServiceAttributs'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='setUserAttributs'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='setUserPassword'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='LdapWsException'>
+    <soap:fault name='LdapWsException' use='literal'/>
+   </fault>
+  </operation>
+ </binding>
+ <service name='LdapWsUser'>
+  <port binding='tns:LdapWsUserBinding' name='LdapWsUserImplPort'>
+   <soap:address location='http://annuuddi.fr.quizzApp.com/LdapWs/LdapWsUserImpl'/>
+  </port>
+ </service>
+</definitions>

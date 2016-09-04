@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr" ng-app="quizzAppApp">
+<head>
+	<meta charset="utf-8">
+	<title>quizzApp Application</title>
+
+	<!-- Angular library -->
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular/angular-route.min.js"></script>
+	<script src="lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
+	<!-- App library -->
+	<script src="js/download.js"></script>
+	<script src="js/services.js"></script>
+	<link rel="stylesheet" href="css/fonts.css" />
+	<link rel="stylesheet" href="less/styles.css" />
+</head>
+<body ng-controller="DownloadCtrl">
+	<header class="clearfix">
+		<img src="images/quizzApp.png" height="120px" class="pull-left" />
+		<h1>
+			Démarquez-vous
+		</h1>
+		<h2>Application</h2>
+	</header>
+	<article class="bigMargin">
+		<form ng-submit="connect ()" class="login" name="loginForm" ng-if="!connected">
+			<div class="form-group">
+				<label for="login">Login :</label>
+				<input type="text" name="login" id="login" ng-model="user.nickname" ng-required="true"/>
+			</div>
+			<div  class="form-group">
+				<label for="password">Password :</label>
+				<input type="password" name="password" id="password" ng-model="user.password" ng-required="true"/>
+			</div>
+			<div class="form-group btnContainer">
+				<button type="submit" ng-disabled="loginForm.$invalid">Login</button>
+			</div>
+		</form>
+		<div class="download"  ng-if="connected">
+			<h1>Pour télécharger l'application,<br/><a href="" ng-click="downloadApplication ()">cliquez ici</a></h1>
+		</div>
+	</article>
+</body>
+</html>

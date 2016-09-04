@@ -1,0 +1,98 @@
+<div>
+	<h2>Questions :</h2>
+	<div class="table">
+		<div class="row head">
+			<div class="col">Question</div>
+			<div class="col">Complément d'information</div>
+			<div class="col">Réponse 1</div>
+			<div class="col">Réponse 2</div>
+			<div class="col">Réponse 3</div>
+			<div class="col">Réponse 4</div>
+			<div class="col noBorder">Actions</div>
+		</div>
+		<form  ng-repeat="question in model.questions" name="questionForm">
+			<div class="row">
+				<div class="col">
+					<textarea type="text" ng-model="question.title" ng-required="true"></textarea>
+				</div>
+				<div class="col">
+					<textarea type="text" ng-model="question.information"></textarea>
+				</div>
+				<div class="col" ng-repeat="answer in question.answers" ng-if="question.type == 0">
+					<textarea type="text" ng-model="answer.text" ng-required="true"></textarea>
+					<label>
+						<input type="radio" ng-model="question.goodAnswer" ng-value="answer" ng-required="true"/>
+					</label>
+				</div>
+				<div class="col col4" ng-if="question.type == 1">
+					<label>
+						<input type="checkbox" ng-model="question.isGood" /> Vrai ?
+					</label>
+				</div>
+				<div class="col" ng-repeat="answer in question.answers" ng-if="question.type == 2">
+					<div class="uploadContainer" upload-preview-file ng-model="answer.fileUpload" img-src="answer.imageUrl" class="pull-left">
+					</div>
+					<label>
+						<input type="radio" ng-model="question.goodAnswer" ng-value="answer" ng-required="true"/>
+					</label>
+				</div>
+				<div class="col col4" ng-if="question.type == 3" colspan="4">
+					<input type="text" ng-model="question.answers[0].text" ng-required="true"/>
+				</div>
+				<div class="col">
+					<button ng-click="updateQuestion (question)" ng-disabled="questionForm.$invalid">Modifier</button>
+					<button ng-click="deleteQuestion (question)">Supprimer</button>
+				</div>
+			</div>
+		</form>
+		<form ng-if="model.newQuestion" name="newQuestionForm">
+			<div class="row">
+				<div class="col">
+					<textarea ng-model="model.newQuestion.title" ng-required="true"></textarea>
+				</div>
+				<div class="col">
+					<textarea type="text" ng-model="model.newQuestion.information"></textarea>
+				</div>
+				<div class="col" ng-repeat="answer in model.newQuestion.answers" ng-if="model.newQuestion.type == 0">
+					<textarea type="text" ng-model="answer.text" ng-required="true"></textarea>
+					<label>
+						<input type="radio" ng-model="model.newQuestion.goodAnswer" ng-value="answer" ng-required="true"/>
+					</label>
+				</div>
+				<div class="col col4" ng-if="model.newQuestion.type == 1" colspan="4">
+					<label>
+						<input type="checkbox" ng-model="model.newQuestion.isGood" /> Vrai ?
+					</label>
+				</div>
+				<div class="col" ng-repeat="answer in model.newQuestion.answers" ng-if="model.newQuestion.type == 2" class="clearfix">
+					<div upload-preview-file ng-model="answer.fileUpload" img-src="answer.imageUrl" class="uploadContainer" ng-required="true">
+					</div>
+					<label>
+						<input type="radio" ng-model="model.newQuestion.goodAnswer" ng-value="answer" ng-required="true"/>
+					</label>
+				</div>
+				<div class="col col4" ng-if="model.newQuestion.type == 3" colspan="4">
+					<input type="text" ng-model="model.newQuestion.answers[0].text" ng-required="true" />
+				</div>
+				<div class="col">
+					<button ng-click="commitNewQuestion()" ng-disabled="newQuestionForm.$invalid">A</button>
+					<button ng-click="deleteNewQuestion()">X</button>
+				</div>
+			</div>
+		</form>
+		<div class="row">
+			<div class="col col6 smallHeight">
+				<button type="button" ng-click="addQuestion(0)">Ajouter une question texte</button>
+				<button type="button" ng-click="addQuestion(2)">Ajouter une question image</button>
+				<button type="button" ng-click="addQuestion(1)">Ajouter une question vrai / faux</button>
+				<button type="button" ng-click="addQuestion(3)">Ajouter une question lettre</button>
+			</div>
+		</div>
+	</div>
+	<div class="paginationContainer">
+		<pagination total-items="model.count" ng-model="model.currentPage" max-size="10" class="pagination-sm" boundary-links="true" ng-change="loadPage (model.currentPage - 1)"></pagination>
+	</div>
+</div>
+<div class="popin" ng-show="model.loading">
+	<div class="loader"></div>
+</div>

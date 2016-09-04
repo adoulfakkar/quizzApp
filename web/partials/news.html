@@ -1,0 +1,58 @@
+<div>
+	<h2>News :</h2>
+	<div class="table">
+		<div class="row head">
+			<div class="col col25">Titre</div>
+			<div class="col col25">Corps</div>
+			<div class="col col25">Photo</div>
+			<div class="col col25 noBorder">Actions</div>
+		</div>
+		<form ng-repeat="news in model.news" name="newsForm">
+			<div class="row">
+				<div class="col col25">
+					<textarea type="text" ng-model="news.title" ng-required="true"></textarea>
+				</div>
+				<div class="col col25">
+					<textarea type="text" ng-model="news.description" ng-required="true"></textarea>
+				</div>
+				<div class="col col25">
+					<div class="uploadContainer" upload-preview-file ng-model="news.fileUpload" img-src="news.image">
+					</div>
+				</div>
+				<div class="col col25">
+					<button ng-click="updateNews (news)" ng-disabled="newsForm.$invalid">Modifier</button>
+					<button ng-click="deleteNews (news)">Supprimer</button>
+				</div>
+			</div>
+		</form>
+		<form name="newNewsForm">
+			<div class="row" ng-if="model.newNews">
+				<div class="col col25">
+					<textarea ng-model="model.newNews.title" ng-required="true"></textarea>
+				</div>
+				<div class="col col25">
+					<textarea type="text" ng-model="model.newNews.description" ng-required="true"></textarea>
+				</div>
+				<div class="col col25">
+					<div upload-preview-file ng-model="model.newNews.fileUpload" img-src="model.newNews.image" class="uploadContainer">
+					</div>
+				</div>
+				<div class="col col25">
+					<button ng-click="commitNewNews()" ng-disabled="newNewsForm.$invalid"*>A</button>
+					<button ng-click="deleteNewNews()">X</button>
+				</div>
+			</div>
+		</form>
+		<div class="row">
+			<div class="col col6 smallHeight">
+				<button type="button" ng-click="addNews()">Ajouter une news</button>
+			</div>
+		</div>
+	</div>
+	<div class="paginationContainer">
+		<pagination total-items="model.count" ng-model="model.currentPage" max-size="10" class="pagination-sm" boundary-links="true" ng-change="loadPage (model.currentPage - 1)"></pagination>
+	</div>
+</div>
+<div class="popin" ng-show="model.loading">
+	<div class="loader"></div>
+</div>

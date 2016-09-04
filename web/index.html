@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr" ng-app="quizzAppApp">
+<head>
+	<meta charset="utf-8">
+	<title>quizzApp Quiz Administration</title>
+
+	<!-- Angular library -->
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular/angular-route.min.js"></script>
+	<script src="lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
+	<!-- App library -->
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/services.js"></script>
+	<script src="js/model.js"></script>
+	<link rel="stylesheet" href="css/fonts.css" />
+	<link rel="stylesheet" href="less/styles.css" />
+</head>
+<body ng-controller="quizzAppCtrl">
+	<header class="clearfix">
+		<img src="images/quizzApp.png" height="120px" class="pull-left" />
+		<h1>
+			Démarquez-vous
+		</h1>
+		<h2>Admin</h2>
+	</header>
+	
+	<nav ng-if="!unauthorized && userModel.token">
+		<a href="#/quiz" ng-class="{selected:currentView == '/quiz'}">Quiz</a>
+		<a href="#/news" ng-class="{selected:currentView == '/news'}">Actus</a>
+		<a href="#/users" ng-class="{selected:currentView == '/users'}">Utilisateurs</a>
+		<a href="#/webserie" ng-class="{selected:currentView == '/webserie'}">WebSerie</a>
+		<a href="#/practice" ng-class="{selected:currentView == '/practice'}">Bonne pratique</a>
+	</nav>
+	
+	<article ng-view ng-if="!unauthorized" ng-class="{bigMargin: !userModel.token}">
+
+	</article>
+	<article>
+		<div class="unauthorized" ng-if="unauthorized">
+			Vous devez être administrateur pour pouvoir gérer l'application.
+		</div>
+	</article>
+	
+</body>
+</html>

@@ -1,0 +1,23 @@
+<div>
+	<h2>Utilisateurs :</h2>
+	<div class="table">
+		<div class="row head">
+			<div class="col col25">Login</div>
+			<div class="col col25">Pseudo</div>
+			<div class="col col25">Code magasin</div>
+			<div class="col col25">Score</div>
+		</div>
+		<div class="row" ng-repeat="user in model.users">
+			<div class="col smallHeight col25">{{user.login}}</div>
+			<div class="col smallHeight col25">{{user.pseudo}}</div>
+			<div class="col smallHeight col25">{{user.shop.name}}</div>
+			<div class="col smallHeight col25">{{user.score}}</div>
+		</div>
+	</div>
+	<div class="paginationContainer">
+		<pagination total-items="model.count" ng-model="model.currentPage" max-size="10" class="pagination-sm" boundary-links="true" ng-change="loadPage (model.currentPage - 1)"></pagination>
+	</div>
+</div>
+<div class="popin" ng-show="model.loading">
+	<div class="loader"></div>
+</div>

@@ -1,0 +1,66 @@
+<div>
+	<h2>Web Serie :</h2>
+	<div class="table">
+		<div class="row head">
+			<div class="col col20">Titre</div>
+			<div class="col col20">Description</div>
+			<div class="col col20">url</div>
+			<div class="col col20">Preview</div>
+			<div class="col col20">Actions</div>
+		</div>
+		<form name="wsForm" ng-repeat="webSerie in model.webSeries">
+			<div class="row">
+				<div class="col col20">
+					<textarea type="text" ng-model="webSerie.title" ng-required="true"></textarea>
+				</div>
+				<div class="col col20">
+					<textarea type="text" ng-model="webSerie.description" ng-required="true"></textarea>
+				</div>
+				<div class="col col20">
+					<input type="text"  ng-model="webSerie.fileUrl" ng-required="true"/>
+					<a href="" ng-click="checkVideo (webSerie)">Vérifier la vidéo</a>
+				</div>
+				<div class="col col20">
+					<div class="uploadContainer" upload-preview-file ng-model="webSerie.fileUpload" img-src="webSerie.previewUrl">
+					</div>
+				</div>
+				<div class="col col20">
+					<button ng-click="updateWebSerie (webSerie)" ng-disabled="wsForm.$invalid">Modifier</button>
+					<button ng-click="deleteWebSerie (webSerie)">Supprimer</button>
+				</div>
+			</div>
+		</form>
+		<form name="wsNewForm">
+			<div class="row" ng-if="model.newWebSerie">
+				<div class="col col20">
+					<textarea ng-model="model.newWebSerie.title" ng-required="true"></textarea>
+				</div>
+				<div class="col col20">
+					<textarea type="text" ng-model="model.newWebSerie.description" ng-required="true"></textarea>
+				</div>
+				<div class="col col20">
+					<input type="text"  ng-model="model.newWebSerie.fileUrl" ng-required="true" />
+				</div>
+				<div class="col col20">
+					<div class="uploadContainer" upload-preview-file ng-model="model.newWebSerie.fileUpload" img-src="model.newWebSerie.previewUrl" ng-required="true">
+					</div>
+				</div>
+				<div class="col col20">
+					<button ng-click="commitNewWebSerie()" ng-disabled="wsNewForm.$invalid">A</button>
+					<button ng-click="deleteNewWebSerie()">X</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col6 smallHeight">
+					<button type="button" ng-click="addWebSerie()">Ajouter une Web Serie</button>
+				</div>
+			</div>
+		</form>
+	</table>
+	<div class="paginationContainer">
+		<pagination total-items="model.count" ng-model="model.currentPage" max-size="10" class="pagination-sm" boundary-links="true" ng-change="loadPage (model.currentPage - 1)"></pagination>
+	</div>
+</div>
+<div class="popin" ng-show="model.loading">
+	<div class="loader"></div>
+</div>

@@ -1,0 +1,73 @@
+// misc utility classes and mixins
+
+.transition ( @property, @duration, @style: ease-in-out ) {
+  -webkit-transition-property: @property;
+  -webkit-transition-duration: @duration;
+  -webkit-transition-timing-function: @style;
+
+  -moz-transition-property: @property;
+  -moz-transition-duration: @duration;
+  -moz-transition-timing-function: @style;
+
+  -ms-transition-property: @property;
+  -ms-transition-duration: @duration;
+  -ms-transition-timing-function: @style;
+
+  -o-transition-property: @property;
+  -o-transition-duration: @duration;
+  -o-transition-timing-function: @style;
+
+  transition-property: @property;
+  transition-duration: @duration;
+  transition-timing-function: @style;
+}
+
+.filter(@filter)
+{
+	-webkit-filter: @filter;
+	-moz-filter: @filter;
+	-ms-filter: @filter;
+	-o-filter: @filter;
+	filter: @filter;
+}
+
+
+html,
+body,
+p,
+span,
+div,
+h1,
+h2,
+h3 {
+	font-family: @fontDefault;
+	font-weight: @normal;
+}
+
+.blueIt {
+	color: @blue;
+}
+
+.progress {
+	background: #3e3e40;
+	height: 6px;
+	position:relative;
+	width:100%;
+		
+	.progressTrack {
+		background: @blue;
+		width:0;
+		height:6px;
+		position:absolute;
+		top:0;
+	}
+	.progressThumb {
+		background: @dirtyWhite;
+		height: 16px;
+		width: 16px;
+		position: absolute;
+		left: 0;
+		top: -5px;
+		border-radius: 8px;
+	}
+}
